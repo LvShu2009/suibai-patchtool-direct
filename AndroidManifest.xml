@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.downm.fixing.direct"
+    android:sharedUserId="lvshu.direct300"
+    android:versionCode="15"
+    android:versionName="2.7">
+
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="33" />
+
+    <!-- 纯本地离线版：不申请 INTERNET / ACCESS_NETWORK_STATE，无任何联网能力 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <application
+        android:name="com.lvshu.build.DiagApp"
+        android:allowBackup="false"
+        android:requestLegacyExternalStorage="true"
+        android:label="酸败自助补丁工具"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+
+        <activity
+            android:name="com.lvshu.build.MainActivity"
+            android:exported="true"
+            android:label="酸败自助补丁工具"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.lvshu.build.ShareProvider"
+            android:authorities="com.downm.fixing.direct.files"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+    </application>
+</manifest>
